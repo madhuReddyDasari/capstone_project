@@ -74,7 +74,7 @@ phone =  spark.sql("select contact_details_id, maps.value as phone from table wh
 twitter =  spark.sql("select contact_details_id, maps.value as twitter from table where maps.type='twitter'")
 # joining fax, phone, twitter dataframes into a single dataframe
 complete_joined_table =  fax.join(phone, on='contact_details_id', how='outer').join(twitter, on='contact_details_id', how='outer')
-complete_table = complete_joined_table.sort(complete_table.contact_details_id.asc())
+complete_table = complete_joined_table.sort(complete_joined_table.contact_details_id.asc())
 #final_join = complete_table.select('contact_details_id', 'fax', 'phone', 'twitter').sort(complete_table.contact_details_id.asc())
 
 # ------------------------------------------------------------------------------------------------------------------
